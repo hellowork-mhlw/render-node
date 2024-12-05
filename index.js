@@ -1,8 +1,15 @@
 // index.js
 const express = require('express')
+const cors = require('cors')
 const { exec } = require("child_process")
 const app = express()
 const PORT = process.env.PORT || 3000
+
+app.use(cors({
+  origin: '*', // すべてのオリジンを許可
+  methods: '*', // すべてのHTTPメソッドを許可
+  allowedHeaders: '*' // すべてのヘッダーを許可
+}));
 
 app.get('/', (req, res) => {
   res.send(`Hello2 ${process.env.HELLO || ''}`)
